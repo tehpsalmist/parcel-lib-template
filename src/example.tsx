@@ -16,7 +16,7 @@ const MonoCheckbox = ({ label = '', ...props }: MonoCheckboxProps) => {
 }
 
 const Example = () => {
-  // const [booleanProp, setBooleanProp] = useState(false)
+  const [booleanProp, setBooleanProp] = useState(false)
 
   return (
     <main className="flex h-screen flex-col items-center p-4">
@@ -26,10 +26,10 @@ const Example = () => {
       </h3>
       <h3 className="mb-2 text-lg text-gray-500">Props Controls</h3>
       <div className="flex flex-wrap space-x-4">
-        {/* <MonoCheckbox checked={booleanProp} onChange={(e) => setBooleanProp(e.target.checked)} label="booleanProp" /> */}
+        <MonoCheckbox checked={booleanProp} onChange={(e) => setBooleanProp(e.target.checked)} label="booleanProp" />
       </div>
       <hr className="my-8 w-full" />
-      <MyComponent/>
+      <MyComponent>{booleanProp ? 'on' : 'off'}</MyComponent>
     </main>
   )
 }
