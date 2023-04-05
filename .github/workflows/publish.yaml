@@ -1,0 +1,28 @@
+name: Publish Package to npmjs
+on:
+  push:
+    branches: [master]
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Check publish status
+        id: check
+        uses: tehpsalmist/npm-publish-status-action@v1
+      - name: Publish if necessary
+        id: publish
+        if: ${{ steps.check.outputs.exists == '0' }}
+        run: |
+          npm i
+          npm run build
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Report publish status
+        if: ${{ steps.check.outputs.exists == '1' }}
+        run: 'echo "package version already exists on npm registry"'

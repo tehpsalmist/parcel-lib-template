@@ -1,0 +1,55 @@
+{
+  "name": "parcel-lib-template",
+  "version": "0.0.1",
+  "source": "src/index.ts",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "types": "lib/types.d.ts",
+  "files": [
+    "lib",
+    "esm"
+  ],
+  "scripts": {
+    "watch": "parcel watch",
+    "start": "parcel serve src/index.html -p 1237",
+    "build": "parcel build --target module --target main --target types",
+    "build:example": "MODE=production parcel build --target example --no-scope-hoist"
+  },
+  "devDependencies": {
+    "@parcel/packager-ts": "^2",
+    "@parcel/transformer-typescript-types": "^2",
+    "@tailwindcss/forms": "^0.5.3",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "parcel": "^2",
+    "prettier-plugin-tailwindcss": "^0.2.6",
+    "process": "^0.11.10",
+    "tailwindcss": "latest",
+    "typescript": "latest"
+  },
+  "dependencies": {
+    "@heroicons/react": "^2",
+    "clsx": "^1"
+  },
+  "peerDependencies": {
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 120,
+    "plugins": [
+      "prettier-plugin-tailwindcss"
+    ]
+  },
+  "targets": {
+    "example": {
+      "source": "src/index.html",
+      "distDir": "./public"
+    },
+    "module": {},
+    "main": {},
+    "types": {}
+  }
+}
