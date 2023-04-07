@@ -1,28 +1,12 @@
 const colors = require('tailwindcss/colors')
-const cerulean = {
-  DEFAULT: '#03A9F4',
-  50: '#B1E6FE',
-  100: '#9CDFFE',
-  200: '#74D3FD',
-  300: '#4CC6FD',
-  400: '#23B9FC',
-  500: '#03A9F4',
-  600: '#0283BD',
-  700: '#025C85',
-  800: '#01364E',
-  900: '#000F16',
-}
 
 module.exports = {
   content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        cerulean,
-        primary: cerulean,
-        secondary: {
-          ...colors.blue,
-        },
+        primary: colors.sky,
+        secondary: colors.indigo,
       },
       minHeight: (theme) => ({
         ...theme('spacing'),
